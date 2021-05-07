@@ -11,16 +11,16 @@ export const AppContext = React.createContext(null);
 function App() {
     // starting point
     const initialEventsState = [
-        { id: 1, name: "consumable" },
-        { id: 2, name: "mental" },
-        { id: 3, name: "social" },
-        { id: 4, name: "physical" },
+        { id: 1, title: "consumable" },
+        { id: 2, title: "mental" },
+        { id: 3, title: "social" },
+        { id: 4, title: "physical" },
     ];
-    const [events, dispatch] = useReducer(eventsReducer, initialEventsState);
+    const [topics, dispatch] = useReducer(topicsReducer, initialEventsState);
     const [popupProfileVisible, setPopupProfileVisible] = useState(false);
 
     // function to handle events
-    function eventsReducer (state, action) {
+    function topicsReducer (state, action) {
         switch (action.type) {
             case "addNew":
                 return state;
@@ -33,7 +33,7 @@ function App() {
         <div className="App">
             <AppContext.Provider
                 value={{
-                    events,
+                    topics,
                     dispatch,
                     popupProfileVisible,
                     setPopupProfileVisible,
