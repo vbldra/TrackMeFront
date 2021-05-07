@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./navbar.scss";
 
+import { AppContext } from "../app/App";
 import PopupProfile from "../popupProfile/PopupProfile";
 
-function Navbar({ visible, setVisible }) {
 
+function Navbar() {
     // need to add a code to close popup clicking outside of the popup menu
     // https://www.cluemediator.com/detect-click-outside-a-react-component-using-react-hooks
+    
+    const { popupProfileVisible, setPopupProfileVisible} = useContext(AppContext)
 
     function handleClick() {
-        setVisible(!visible);
+        setPopupProfileVisible(!popupProfileVisible);
     }
-
-
 
     return (
         <div className="navbar">
@@ -21,7 +22,7 @@ function Navbar({ visible, setVisible }) {
             <button className="profile-btn" onClick={handleClick}>
                 Profile
             </button>
-            {visible && <PopupProfile />}
+            {popupProfileVisible && <PopupProfile />}
         </div>
     );
 }
